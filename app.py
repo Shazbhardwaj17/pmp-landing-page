@@ -4,11 +4,11 @@ st.set_page_config(page_title="PMP Elite Simulator", layout="wide", initial_side
 
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600&display=swap');
     
     html, body, [class*="css"] { 
         font-family: 'Inter', sans-serif !important; 
-        background-color: #FAFAFA !important; 
+        background-color: #F8FAFC !important; 
     }
     
     /* Hide Streamlit Defaults */
@@ -18,263 +18,351 @@ st.markdown("""
     .block-container {padding-top: 0rem !important; padding-bottom: 0rem !important; max-width: 100% !important; padding-left: 0 !important; padding-right: 0 !important;}
     
     /* Typography */
-    h1, h2, .serif-text { font-family: 'Playfair Display', serif !important; }
+    h1, h2, .serif-text { font-family: 'Cinzel', serif !important; letter-spacing: 0.5px; }
     
-    /* Hero Banner (Dark Blue) */
+    /* Hero Banner (Midnight Slate & Gold) */
     .hero-section {
-        background-color: #214065;
-        padding: 100px 20px;
+        background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+        padding: 110px 20px;
         text-align: center;
         color: white;
+        border-bottom: 4px solid #D4AF37;
     }
     .hero-title {
-        font-size: 3.8rem;
+        font-size: 3.5rem;
         font-weight: 700;
-        margin-bottom: 20px;
+        margin-bottom: 25px;
         line-height: 1.2;
+        color: #F8FAFC;
     }
     .hero-subtitle {
-        font-size: 1.2rem;
-        font-weight: 400;
-        max-width: 800px;
+        font-size: 1.15rem;
+        font-weight: 300;
+        max-width: 750px;
         margin: 0 auto 40px auto;
-        color: #E2E8F0;
-        line-height: 1.6;
+        color: #CBD5E1;
+        line-height: 1.7;
     }
     
     /* Custom Buttons */
     .btn-primary {
-        background-color: #EAB308;
-        color: #111827 !important;
-        padding: 14px 28px;
-        border-radius: 6px;
+        background-color: #D4AF37;
+        color: #0F172A !important;
+        padding: 15px 32px;
+        border-radius: 4px;
         text-decoration: none;
         font-weight: 600;
         font-size: 1.1rem;
-        transition: background-color 0.2s;
+        transition: all 0.3s ease;
         display: inline-block;
         margin: 10px;
-        border: 1px solid #EAB308;
+        box-shadow: 0 4px 14px 0 rgba(212, 175, 55, 0.39);
     }
-    .btn-primary:hover { background-color: #CA8A04; }
+    .btn-primary:hover { background-color: #B7942E; transform: translateY(-2px); }
     
     .btn-secondary {
         background-color: transparent;
-        color: white !important;
-        padding: 14px 28px;
-        border-radius: 6px;
+        color: #F8FAFC !important;
+        padding: 15px 32px;
+        border-radius: 4px;
         text-decoration: none;
-        font-weight: 600;
+        font-weight: 500;
         font-size: 1.1rem;
-        transition: background-color 0.2s;
+        transition: all 0.3s ease;
         display: inline-block;
         margin: 10px;
-        border: 1px solid white;
+        border: 1px solid #64748B;
     }
-    .btn-secondary:hover { background-color: rgba(255,255,255,0.1); }
+    .btn-secondary:hover { background-color: rgba(255,255,255,0.05); border-color: #F8FAFC; }
     
-    /* Grid Cards */
-    .feature-card {
+    /* Feature Cards */
+    .white-section { padding: 90px 8%; background-color: #FFFFFF; }
+    .gray-section { padding: 90px 8%; background-color: #F8FAFC; }
+    
+    .value-card {
+        text-align: center;
+        padding: 30px 20px;
+    }
+    .value-icon {
+        font-size: 2.5rem;
+        color: #D4AF37;
+        margin-bottom: 20px;
+    }
+    
+    /* UI Mockup Cards */
+    .ui-card {
+        background: white;
+        border-radius: 8px;
+        border: 1px solid #E2E8F0;
+        overflow: hidden;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .ui-header {
+        background: #F1F5F9;
+        padding: 12px 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #64748B;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border-bottom: 1px solid #E2E8F0;
+    }
+    .ui-body { padding: 25px 20px; flex-grow: 1; }
+    .ui-mock-element {
+        background: #F8FAFC;
+        border: 1px dashed #CBD5E1;
+        border-radius: 6px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    /* Testimonials Grid */
+    .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-top: 40px;
+    }
+    .review-card {
         background: white;
         padding: 30px;
         border-radius: 8px;
-        border: 1px solid #E5E7EB;
-        height: 100%;
-        text-align: center;
-        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        border: 1px solid #E2E8F0;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
     }
-    .feature-icon {
-        font-size: 2rem;
-        color: #EAB308;
-        margin-bottom: 15px;
-    }
-    
-    /* Section Formatting */
-    .content-section {
-        padding: 80px 10%;
-        background-color: #FAFAFA;
-    }
-    .white-section {
-        padding: 80px 10%;
-        background-color: #FFFFFF;
-    }
-    .section-title {
-        text-align: center;
-        font-size: 2.8rem;
-        color: #111827;
-        margin-bottom: 15px;
-    }
-    .section-subtitle {
-        text-align: center;
-        color: #6B7280;
-        font-size: 1.1rem;
-        margin-bottom: 50px;
-    }
+    .stars { color: #D4AF37; font-size: 1.2rem; margin-bottom: 15px; }
+    .reviewer-name { font-weight: 600; color: #0F172A; margin-top: 20px; font-size: 0.95rem; }
     
     /* Pricing Card */
     .pricing-card {
-        border: 2px solid #EAB308;
-        border-radius: 12px;
-        padding: 40px;
+        border: 2px solid #D4AF37;
+        border-radius: 8px;
+        padding: 50px 40px;
         background: white;
-        box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         position: relative;
+        overflow: hidden;
     }
     .pricing-badge {
         position: absolute;
-        top: -12px;
-        right: 20px;
-        background: #EAB308;
-        color: #111827;
-        padding: 4px 12px;
-        border-radius: 12px;
-        font-weight: 600;
-        font-size: 0.8rem;
+        top: 20px;
+        right: -35px;
+        background: #0F172A;
+        color: #D4AF37;
+        padding: 8px 40px;
+        font-weight: 700;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        transform: rotate(45deg);
     }
 </style>
 """, unsafe_allow_html=True)
 
-# --- TOP NOTIFICATION BAR ---
+# --- NOTIFICATION BAR ---
 st.markdown("""
-<div style="background-color: #10B981; text-align: center; padding: 10px; color: white; font-weight: 500; font-size: 0.9rem;">
-    🎯 The updated PMP Elite Simulator is now live. <a href="https://app.pmpelite.com" style="color: white; text-decoration: underline;">Start Practicing</a>
+<div style="background-color: #D4AF37; text-align: center; padding: 12px; color: #0F172A; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px;">
+    LATEST ECO ALIGNMENT COMPLETED. <a href="https://app.pmpelite.com" style="color: #0F172A; text-decoration: underline;">BEGIN YOUR FREE ASSESSMENT</a>
 </div>
 """, unsafe_allow_html=True)
 
 # --- HERO SECTION ---
 st.markdown("""
 <div class="hero-section">
-    <h1 class="hero-title serif-text">Know If You're Ready for<br>the Updated PMP Exam</h1>
-    <p class="hero-subtitle">Start with the free readiness assessment, then strengthen your judgment with scenario-based practice aligned to the latest PMP Examination Content Outline.</p>
+    <h1 class="hero-title serif-text">Command the PMP® Exam<br>With Elite Precision</h1>
+    <p class="hero-subtitle">Bypass the fluff. Validate your readiness with deeply analytical scenario-based mocks, targeted domain sprints, and exclusive bonus question banks built for the modern project manager.</p>
     <div>
-        <a href="https://app.pmpelite.com" class="btn-primary" target="_self">Start Free Assessment →</a>
-        <a href="#pricing" class="btn-secondary" target="_self">View Plans</a>
+        <a href="https://app.pmpelite.com" class="btn-primary" target="_self">Start Free Assessment</a>
+        <a href="#pricing" class="btn-secondary" target="_self">View Elite Tier</a>
     </div>
-    <p style="font-size: 0.85rem; color: #9CA3AF; margin-top: 15px;">Free • 15 questions • Immediate readiness feedback</p>
+    <p style="font-size: 0.85rem; color: #94A3B8; margin-top: 20px; font-weight: 300;">Free 15-Question Diagnostic • Instant Data Feedback • No Credit Card Required</p>
 </div>
 """, unsafe_allow_html=True)
 
-# --- VALUE PROPS (3 COLUMNS) ---
+# --- VALUE PROPS ---
 st.markdown('<div class="white-section">', unsafe_allow_html=True)
 c1, c2, c3 = st.columns(3)
 with c1:
     st.markdown("""
-    <div style="text-align: center; padding: 20px;">
-        <div class="feature-icon">📖</div>
-        <h3 class="serif-text" style="color: #111827;">Built for the modern exam</h3>
-        <p style="color: #6B7280; font-size: 0.95rem;">100% aligned to the current Examination Content Outline and Agile methodologies.</p>
+    <div class="value-card">
+        <div class="value-icon">🏛️</div>
+        <h3 class="serif-text" style="color: #0F172A;">Architected for 2026</h3>
+        <p style="color: #64748B; font-size: 0.95rem; line-height: 1.6;">Strict adherence to the current Examination Content Outline, emphasizing Agile, Hybrid, and Predictive enterprise environments.</p>
     </div>
     """, unsafe_allow_html=True)
 with c2:
     st.markdown("""
-    <div style="text-align: center; padding: 20px;">
-        <div class="feature-icon">🎯</div>
-        <h3 class="serif-text" style="color: #111827;">Scenario-based logic</h3>
-        <p style="color: #6B7280; font-size: 0.95rem;">Judgment-based items across People, Process, and Business Environment—never rote recall.</p>
+    <div class="value-card">
+        <div class="value-icon">⚖️</div>
+        <h3 class="serif-text" style="color: #0F172A;">Situational Judgment</h3>
+        <p style="color: #64748B; font-size: 0.95rem; line-height: 1.6;">Eradicate rote memorization. Our items test your execution of PMI logic across People, Process, and Business Environment.</p>
     </div>
     """, unsafe_allow_html=True)
 with c3:
     st.markdown("""
-    <div style="text-align: center; padding: 20px;">
-        <div class="feature-icon">⏱️</div>
-        <h3 class="serif-text" style="color: #111827;">Real exam conditions</h3>
-        <p style="color: #6B7280; font-size: 0.95rem;">Full 180-question, 230-minute simulations with interactive question types and pressure.</p>
+    <div class="value-card">
+        <div class="value-icon">🛡️</div>
+        <h3 class="serif-text" style="color: #0F172A;">Exam-Day Conditioning</h3>
+        <p style="color: #64748B; font-size: 0.95rem; line-height: 1.6;">Full 180-question, 230-minute stress tests designed to build the cognitive stamina required to pass on your first attempt.</p>
     </div>
     """, unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
-# --- PRODUCT SHOWCASE ---
-st.markdown('<div class="content-section">', unsafe_allow_html=True)
-st.markdown('<h2 class="section-title serif-text">See the Real Product, <span style="color: #EAB308;">Not a Mockup</span></h2>', unsafe_allow_html=True)
-st.markdown('<p class="section-subtitle">Genuine workflows from the live simulator: the question experience, coaching insights, and analytics.</p>', unsafe_allow_html=True)
+# --- PRODUCT SHOWCASE (WITH CSS UI MOCKUPS) ---
+st.markdown('<div class="gray-section">', unsafe_allow_html=True)
+st.markdown('<h2 class="serif-text" style="text-align: center; font-size: 2.5rem; color: #0F172A; margin-bottom: 10px;">The Platform Engine</h2>', unsafe_allow_html=True)
+st.markdown('<p style="text-align: center; color: #64748B; margin-bottom: 50px;">A glimpse into the workflow: rigorous practice, intelligent insights, and definitive readiness tracking.</p>', unsafe_allow_html=True)
 
 sc1, sc2, sc3 = st.columns(3)
 with sc1:
     st.markdown("""
-    <div class="feature-card">
-        <div style="text-align: left; font-size: 0.8rem; color: #9CA3AF; font-weight: 600; letter-spacing: 1px; margin-bottom: 10px;">STEP 1 — PRACTICE</div>
-        <div style="background: #F3F4F6; border-radius: 6px; height: 180px; margin-bottom: 20px; display:flex; align-items:center; justify-content:center; border: 1px solid #E5E7EB;">
-            <span style="color: #9CA3AF;">[ Clean Exam Interface ]</span>
+    <div class="ui-card">
+        <div class="ui-header">Phase 1: Simulation</div>
+        <div class="ui-body">
+            <div class="ui-mock-element" style="border-left: 3px solid #3B82F6;">
+                <div style="height: 10px; width: 40%; background: #E2E8F0; margin-bottom: 10px; border-radius: 2px;"></div>
+                <div style="height: 10px; width: 90%; background: #E2E8F0; margin-bottom: 10px; border-radius: 2px;"></div>
+                <div style="height: 10px; width: 70%; background: #E2E8F0; border-radius: 2px;"></div>
+            </div>
+            <h4 style="color: #0F172A; margin-bottom: 10px;">Immersive Question UI</h4>
+            <p style="color: #64748B; font-size: 0.9rem; line-height: 1.5;">Navigate complex scenarios, drag-and-drop matches, and multiple-response items in an interface mirroring the real Pearson VUE environment.</p>
         </div>
-        <h4 style="color: #111827; margin-bottom: 10px; text-align: left;">Question Experience</h4>
-        <p style="color: #6B7280; font-size: 0.9rem; text-align: left;">Practice every PMP question format used on the live exam: multiple response, situational, and graphic-based.</p>
     </div>
     """, unsafe_allow_html=True)
 with sc2:
     st.markdown("""
-    <div class="feature-card">
-        <div style="text-align: left; font-size: 0.8rem; color: #9CA3AF; font-weight: 600; letter-spacing: 1px; margin-bottom: 10px;">STEP 2 — LEARN</div>
-        <div style="background: #F3F4F6; border-radius: 6px; height: 180px; margin-bottom: 20px; display:flex; align-items:center; justify-content:center; border: 1px solid #E5E7EB;">
-            <span style="color: #9CA3AF;">[ Detailed Rationales ]</span>
+    <div class="ui-card">
+        <div class="ui-header">Phase 2: Recalibration</div>
+        <div class="ui-body">
+            <div class="ui-mock-element" style="background: #ECFDF5; border: 1px solid #10B981;">
+                <div style="color: #10B981; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">✓ Correct Logic Applied</div>
+                <div style="height: 8px; width: 100%; background: #D1FAE5; margin-bottom: 8px; border-radius: 2px;"></div>
+                <div style="height: 8px; width: 60%; background: #D1FAE5; border-radius: 2px;"></div>
+            </div>
+            <h4 style="color: #0F172A; margin-bottom: 10px;">Deep-Dive Rationales</h4>
+            <p style="color: #64748B; font-size: 0.9rem; line-height: 1.5;">Instantly dissect why the best answer is correct, and exactly why the distractors fail PMI's strict ethical and procedural logic.</p>
         </div>
-        <h4 style="color: #111827; margin-bottom: 10px; text-align: left;">Coaching Insights</h4>
-        <p style="color: #6B7280; font-size: 0.9rem; text-align: left;">Understand exactly why the best answer is correct and how PMI expects a project manager to think in the field.</p>
     </div>
     """, unsafe_allow_html=True)
 with sc3:
     st.markdown("""
-    <div class="feature-card">
-        <div style="text-align: left; font-size: 0.8rem; color: #9CA3AF; font-weight: 600; letter-spacing: 1px; margin-bottom: 10px;">STEP 3 — IMPROVE</div>
-        <div style="background: #FFFBEB; border-radius: 6px; height: 180px; margin-bottom: 20px; display:flex; align-items:center; justify-content:center; border: 1px solid #FDE68A;">
-            <div style="text-align: center;">
-                <h2 style="color: #D97706; margin:0;">76%</h2>
-                <p style="color: #D97706; font-size: 0.8rem; margin:0;">Target Readiness</p>
+    <div class="ui-card">
+        <div class="ui-header">Phase 3: Execution</div>
+        <div class="ui-body">
+            <div class="ui-mock-element" style="text-align: center; border: none; background: transparent;">
+                <div style="display: inline-block; width: 80px; height: 80px; border-radius: 50%; border: 6px solid #D4AF37; line-height: 68px; font-size: 1.5rem; font-weight: 700; color: #0F172A;">78%</div>
             </div>
+            <h4 style="color: #0F172A; margin-bottom: 10px;">Predictive Analytics</h4>
+            <p style="color: #64748B; font-size: 0.9rem; line-height: 1.5;">Stop guessing your readiness. Track cumulative scoring across all domains to know the exact moment you are ready to pass.</p>
         </div>
-        <h4 style="color: #111827; margin-bottom: 10px; text-align: left;">Readiness Result</h4>
-        <p style="color: #6B7280; font-size: 0.9rem; text-align: left;">A real-time benchmark and personalized data guidance across all three domains before exam day.</p>
     </div>
     """, unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
-# --- AUTHOR / SOCIAL PROOF ---
+# --- AUTHOR / CREDENTIALS ---
 st.markdown('<div class="white-section">', unsafe_allow_html=True)
-st.markdown('<div style="max-width: 800px; margin: 0 auto;">', unsafe_allow_html=True)
-st.markdown('<p style="color: #EAB308; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">Engineered for Professionals, By a Professional</p>', unsafe_allow_html=True)
-st.markdown('<h2 class="serif-text" style="color: #111827; margin-top: 5px;">Built by an Enterprise Risk & Data Expert</h2>', unsafe_allow_html=True)
+st.markdown('<div style="max-width: 900px; margin: 0 auto; text-align: center;">', unsafe_allow_html=True)
+st.markdown('<p style="color: #D4AF37; font-size: 0.85rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">Engineered by a Practitioner, For Practitioners</p>', unsafe_allow_html=True)
+st.markdown('<h2 class="serif-text" style="color: #0F172A; margin-top: 10px; font-size: 2.2rem;">Architected by an Enterprise Project Leader</h2>', unsafe_allow_html=True)
 st.markdown("""
-<p style="color: #4B5563; line-height: 1.7; font-size: 1.05rem;">
-    Created by a certified CPCU and seasoned Project Manager bringing 14 years of experience orchestrating enterprise risk systems, product management, and advanced data analytics. 
+<p style="color: #475569; line-height: 1.8; font-size: 1.1rem; text-align: left; margin-top: 30px;">
+    Built by a certified <strong>PMP® and PgMP® professional</strong> bringing over 15 years of hard-earned experience orchestrating complex enterprise risk systems, product management life cycles, and advanced machine learning data pipelines.
     <br><br>
-    This simulator was not generated by a generic test-prep factory. It was engineered utilizing sophisticated Python data pipelines to perfectly mirror the real exam's rigor, ensuring your study time is driven by precise, analytical performance tracking.
+    This is not a generic, mass-produced test bank. The Elite Simulator was engineered using sophisticated Python data structures to perfectly mirror the psychological rigor of the real exam, ensuring your study time is driven by precise, analytical performance metrics rather than outdated theory.
 </p>
-<div style="border-left: 4px solid #EAB308; padding-left: 20px; margin-top: 30px;">
-    <p style="font-style: italic; color: #111827; font-size: 1.1rem;">"A faithful, principle-aligned preparation tool that bridges the gap between studying framework theory and executing actual project judgment."</p>
-</div>
 """, unsafe_allow_html=True)
 st.markdown('</div></div>', unsafe_allow_html=True)
 
-# --- PRICING ---
-st.markdown('<div id="pricing" class="content-section">', unsafe_allow_html=True)
-st.markdown('<h2 class="section-title serif-text">Simple, <span style="color: #EAB308;">One-Time Pricing</span></h2>', unsafe_allow_html=True)
-st.markdown('<p class="section-subtitle">Training that prevents failure pays for itself. Instant access. Secure checkout.</p>', unsafe_allow_html=True)
+# --- 9-GRID TESTIMONIALS ---
+st.markdown('<div class="gray-section">', unsafe_allow_html=True)
+st.markdown('<h2 class="serif-text" style="text-align: center; font-size: 2.5rem; color: #0F172A;">Elite Alumni Outcomes</h2>', unsafe_allow_html=True)
 
-p_empty1, p_col, p_empty2 = st.columns([1, 1.5, 1])
+st.markdown("""
+<div class="testimonial-grid">
+    <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p style="color: #475569; font-style: italic; font-size: 0.95rem;">"The domain sprints were exactly what I needed to lock in Business Environment concepts. Passed Above Target!"</p>
+        <div class="reviewer-name">Rajesh K.</div>
+    </div>
+    <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p style="color: #475569; font-style: italic; font-size: 0.95rem;">"This simulator perfectly mirrors the actual exam's ambiguity. The detailed rationales for incorrect options are a goldmine."</p>
+        <div class="reviewer-name">Priya M.</div>
+    </div>
+    <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p style="color: #475569; font-style: italic; font-size: 0.95rem;">"The analytics dashboard showed me my blind spots in Agile methodologies instantly. Highly recommend for the final week of prep."</p>
+        <div class="reviewer-name">Sarah J.</div>
+    </div>
+    <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p style="color: #475569; font-style: italic; font-size: 0.95rem;">"I failed my first attempt using generic mocks. The Elite Simulator's situational questions made all the difference on my second try."</p>
+        <div class="reviewer-name">Amit S.</div>
+    </div>
+    <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p style="color: #475569; font-style: italic; font-size: 0.95rem;">"No fluff, just hard, realistic questions. If you can score 75% on these full-length mocks, you are ready for the real deal."</p>
+        <div class="reviewer-name">Michael T.</div>
+    </div>
+    <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p style="color: #475569; font-style: italic; font-size: 0.95rem;">"Worth every penny. The bonus question banks and the strict 230-minute timers built the serious mental stamina I needed."</p>
+        <div class="reviewer-name">Neha D.</div>
+    </div>
+    <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p style="color: #475569; font-style: italic; font-size: 0.95rem;">"The interface is slick, and the coaching insights completely shifted how I approach PMI's servant-leadership logic."</p>
+        <div class="reviewer-name">Vikram R.</div>
+    </div>
+    <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p style="color: #475569; font-style: italic; font-size: 0.95rem;">"The best investment in my PMP journey. The questions are remarkably close to what I saw on the real 2026 ECO test."</p>
+        <div class="reviewer-name">David L.</div>
+    </div>
+    <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p style="color: #475569; font-style: italic; font-size: 0.95rem;">"I loved the immediate feedback. The lifetime access let me pace my domain sprints perfectly over 3 months of studying."</p>
+        <div class="reviewer-name">Anjali T.</div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
+
+# --- PRICING ---
+st.markdown('<div id="pricing" class="white-section">', unsafe_allow_html=True)
+st.markdown('<h2 class="serif-text" style="text-align: center; font-size: 2.5rem; color: #0F172A;">Transparent, One-Time Pricing</h2>', unsafe_allow_html=True)
+st.markdown('<p style="text-align: center; color: #64748B; margin-bottom: 60px;">A single investment to secure your certification. No recurring subscriptions.</p>', unsafe_allow_html=True)
+
+p_empty1, p_col, p_empty2 = st.columns([1, 1.3, 1])
 with p_col:
     st.markdown("""
     <div class="pricing-card">
-        <div class="pricing-badge">ELITE TIER</div>
-        <h3 class="serif-text" style="color: #111827; margin-top: 0; font-size: 1.8rem;">Lifetime Access</h3>
-        <h1 style="color: #111827; font-size: 3.5rem; margin: 10px 0;">₹699</h1>
-        <p style="color: #6B7280; font-size: 0.95rem;">One-time payment</p>
-        <hr style="border-top: 1px solid #E5E7EB; margin: 25px 0;">
-        <ul style="list-style-type: none; padding-left: 0; color: #4B5563; line-height: 2.2;">
-            <li>✓ <strong>6 Full Exam</strong> simulations (180 Qs each)</li>
-            <li>✓ Targeted <strong>Domain Sprints</strong></li>
-            <li>✓ Advanced performance trend tracking</li>
-            <li>✓ Full rationales for every correct & incorrect option</li>
-            <li>✓ Lifetime dashboard access</li>
+        <div class="pricing-badge">LIFETIME</div>
+        <h3 class="serif-text" style="color: #0F172A; margin-top: 0; font-size: 1.8rem;">Elite Access</h3>
+        <h1 style="color: #0F172A; font-size: 4rem; margin: 10px 0; font-weight: 700;">₹699</h1>
+        <p style="color: #64748B; font-size: 0.95rem;">One-time secure payment</p>
+        <hr style="border-top: 1px solid #E2E8F0; margin: 30px 0;">
+        <ul style="list-style-type: none; padding-left: 0; color: #334155; line-height: 2.4; font-size: 1.05rem;">
+            <li>✓ <strong>6 Full-Length Mocks</strong> (180 questions each)</li>
+            <li>✓ <strong>Targeted Domain Sprints</strong> for rapid review</li>
+            <li>✓ <strong>Exclusive Bonus Question Banks</strong></li>
+            <li>✓ Advanced analytical dashboard & trend tracking</li>
+            <li>✓ Deep-dive rationales for every option</li>
+            <li>✓ Lifetime platform access</li>
         </ul>
-        <div style="text-align: center; margin-top: 30px;">
-            <a href="https://app.pmpelite.com" class="btn-primary" style="display: block; margin: 0;">Unlock Elite Access Now</a>
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="https://app.pmpelite.com" class="btn-primary" style="display: block; margin: 0; padding: 18px;">Secure Premium Access</a>
         </div>
     </div>
     """, unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
 # --- FAQ ---
-st.markdown('<div class="white-section" style="max-width: 800px; margin: 0 auto;">', unsafe_allow_html=True)
-st.markdown('<h2 class="section-title serif-text">Common Questions</h2>', unsafe_allow_html=True)
+st.markdown('<div class="gray-section" style="padding-top: 40px; padding-bottom: 40px;">', unsafe_allow_html=True)
+st.markdown('<div style="max-width: 800px; margin: 0 auto;">', unsafe_allow_html=True)
+st.markdown('<h2 class="serif-text" style="text-align: center; font-size: 2rem; color: #0F172A; margin-bottom: 30px;">Frequently Asked Questions</h2>', unsafe_allow_html=True)
 
 with st.expander("Is this simulator aligned with the current exam?"):
     st.write("Yes. The question bank is meticulously aligned with the current PMP Examination Content Outline (ECO), incorporating heavily weighted Agile, Hybrid, and Predictive methodologies.")
@@ -282,15 +370,15 @@ with st.expander("Is this simulator aligned with the current exam?"):
 with st.expander("Can I try it before paying?"):
     st.write("Absolutely. You can launch the Free Readiness Assessment immediately with no credit card required to experience the interface and question quality.")
 
-with st.expander("How does the performance analytics work?"):
-    st.write("Our proprietary backend tracks your success rate across the three core domains: People, Process, and Business Environment. You can review past attempts and target your exact weak points to study efficiently.")
-st.markdown('</div>', unsafe_allow_html=True)
+with st.expander("Are the bonus question banks included?"):
+    st.write("Yes. The Elite tier includes lifetime access to our specialized bonus question banks alongside the core mock exams and domain sprints.")
+st.markdown('</div></div>', unsafe_allow_html=True)
 
 # --- BOTTOM CTA ---
 st.markdown("""
 <div class="hero-section" style="padding: 80px 20px;">
-    <h1 class="hero-title serif-text" style="font-size: 3rem;">The Exam Won't Wait. Neither Should You.</h1>
-    <p class="hero-subtitle" style="margin-bottom: 30px;">Find out exactly where you stand in 15 minutes, then turn your result into full exam practice.</p>
-    <a href="https://app.pmpelite.com" class="btn-primary" target="_self">Start Free Readiness Assessment →</a>
+    <h1 class="hero-title serif-text" style="font-size: 2.8rem;">The Exam Won't Wait.</h1>
+    <p class="hero-subtitle" style="margin-bottom: 35px; color: #CBD5E1;">Identify your precise knowledge gaps in 15 minutes, then convert your baseline into exam-day confidence.</p>
+    <a href="https://app.pmpelite.com" class="btn-primary" target="_self">Start Free Assessment</a>
 </div>
 """, unsafe_allow_html=True)
