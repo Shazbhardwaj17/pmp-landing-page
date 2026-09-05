@@ -178,7 +178,7 @@ st.markdown("""
 # --- NOTIFICATION BAR ---
 st.markdown("""
 <div style="background-color: #EAB308; text-align: center; padding: 12px; color: #0F172A; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px;">
-    LATEST ECO 2026 ALIGNMENT COMPLETED. <a href="https://app.pmpelite.com" style="color: #0F172A; text-decoration: underline;">BEGIN YOUR FREE ASSESSMENT</a>
+    LATEST ECO 2026 ALIGNMENT COMPLETED. <a href="https://pmp-simulator-2026.streamlit.app" style="color: #0F172A; text-decoration: underline;">BEGIN YOUR FREE ASSESSMENT</a>
 </div>
 """, unsafe_allow_html=True)
 
@@ -188,8 +188,8 @@ st.markdown("""
     <h1 class="hero-title serif-text">Know If You're Ready for<br>the Updated PMP Exam</h1>
     <p class="hero-subtitle">Start with the free readiness assessment, then strengthen your judgment with scenario-based practice aligned to the 2026 PMP Examination Content Outline and the PMBOK Guide—Eighth Edition.</p>
     <div>
-        <a href="https://app.pmpelite.com" class="btn-primary" target="_self">Start Free Assessment</a>
-        <a href="#pricing" class="btn-secondary" target="_self">View Plans</a>
+        <a href="https://pmp-simulator-2026.streamlit.app" class="btn-primary" target="_self">Start Free Assessment</a>
+        <a href="https://pmp-simulator-2026.streamlit.app" class="btn-secondary" target="_self">View Plans</a>
     </div>
     <p style="font-size: 0.85rem; color: #94A3B8; margin-top: 20px; font-weight: 300;">Free 15-Question Diagnostic • Immediate readiness feedback</p>
 </div>
@@ -370,7 +370,7 @@ with p_col:
             <li>✓ Lifetime platform access</li>
         </ul>
         <div style="text-align: center; margin-top: 40px;">
-            <a href="https://app.pmpelite.com" class="btn-primary" style="display: block; margin: 0; padding: 18px;">Secure Premium Access</a>
+            <a href="https://pmp-simulator-2026.streamlit.app" class="btn-primary" style="display: block; margin: 0; padding: 18px;">Secure Premium Access</a>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -399,7 +399,7 @@ st.markdown("""
 <div class="hero-section" style="padding: 80px 20px;">
     <h1 class="hero-title serif-text" style="font-size: 2.8rem;">The Exam Won't Wait. Neither Should You.</h1>
     <p class="hero-subtitle" style="margin-bottom: 35px; color: #CBD5E1;">Find out exactly where you stand in 15 minutes, then turn your result into full exam practice.</p>
-    <a href="https://app.pmpelite.com" class="btn-primary" target="_self">Start Free Readiness Assessment →</a>
+    <a href="https://pmp-simulator-2026.streamlit.app" class="btn-primary" target="_self">Start Free Readiness Assessment →</a>
 </div>
 """, unsafe_allow_html=True)
 
@@ -408,13 +408,13 @@ st.markdown('<div class="footer-container">', unsafe_allow_html=True)
 fc1, fc2, fc3, fc4 = st.columns(4)
 with fc1:
     st.markdown("<h4 style='color: #F8FAFC; margin-bottom:15px; font-weight:600;'>Simulator</h4>", unsafe_allow_html=True)
-    st.markdown("<a href='https://app.pmpelite.com' style='color:#94A3B8; text-decoration:none; display:block; margin-bottom:10px;'>Start Free Assessment</a>", unsafe_allow_html=True)
-    st.markdown("<a href='#pricing' style='color:#94A3B8; text-decoration:none; display:block; margin-bottom:10px;'>Pricing & Plans</a>", unsafe_allow_html=True)
-    st.markdown("<a href='#pricing' style='color:#94A3B8; text-decoration:none; display:block; margin-bottom:10px;'>Features Overview</a>", unsafe_allow_html=True)
+    st.markdown("<a href='https://pmp-simulator-2026.streamlit.app' style='color:#94A3B8; text-decoration:none; display:block; margin-bottom:10px;'>Start Free Assessment</a>", unsafe_allow_html=True)
+    st.markdown("<a href='https://pmp-simulator-2026.streamlit.app' style='color:#94A3B8; text-decoration:none; display:block; margin-bottom:10px;'>Pricing & Plans</a>", unsafe_allow_html=True)
+    st.markdown("<a href='https://pmp-simulator-2026.streamlit.app' style='color:#94A3B8; text-decoration:none; display:block; margin-bottom:10px;'>Features Overview</a>", unsafe_allow_html=True)
 with fc2:
     st.markdown("<h4 style='color: #F8FAFC; margin-bottom:15px; font-weight:600;'>Resources</h4>", unsafe_allow_html=True)
-    st.markdown("<a href='#pricing' style='color:#94A3B8; text-decoration:none; display:block; margin-bottom:10px;'>Bonus Question Banks</a>", unsafe_allow_html=True)
-    st.markdown("<a href='https://app.pmpelite.com' style='color:#94A3B8; text-decoration:none; display:block; margin-bottom:10px;'>Performance Analytics</a>", unsafe_allow_html=True)
+    st.markdown("<a href='https://pmp-simulator-2026.streamlit.app' style='color:#94A3B8; text-decoration:none; display:block; margin-bottom:10px;'>Bonus Question Banks</a>", unsafe_allow_html=True)
+    st.markdown("<a href='https://pmp-simulator-2026.streamlit.app' style='color:#94A3B8; text-decoration:none; display:block; margin-bottom:10px;'>Performance Analytics</a>", unsafe_allow_html=True)
 with fc3:
     st.markdown("<h4 style='color: #F8FAFC; margin-bottom:15px; font-weight:600;'>Company</h4>", unsafe_allow_html=True)
     if st.button("About Us", key="btn_about", type="tertiary", use_container_width=True): st.session_state.active_doc = "about"
