@@ -16,10 +16,14 @@ st.markdown("""
         scroll-behavior: smooth;
     }
     
-    /* Hide Streamlit Defaults */
+    /* 1. HIDE ALL STREAMLIT CLOUD ARTIFACTS */
     #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
+    footer {display: none !important;}
     header {visibility: hidden;}
+    [data-testid="stToolbar"] {visibility: hidden !important;}
+    .viewerBadge_container, .viewerBadge_link, [data-testid="stAppDeployButton"], #stDeployButton {
+        display: none !important;
+    }
     .block-container {padding-top: 0rem !important; padding-bottom: 0rem !important; max-width: 100% !important; padding-left: 0 !important; padding-right: 0 !important;}
     
     /* Typography matching reference site */
@@ -171,6 +175,18 @@ st.markdown("""
     div[data-testid="stButton"] button[kind="tertiary"]:hover {
         color: #EAB308 !important;
         background: transparent !important;
+    }
+    
+    /* 2. MOBILE RESPONSIVE TWEAKS */
+    @media (max-width: 768px) {
+        .hero-section { padding: 60px 15px; }
+        .hero-title { font-size: 2.2rem; }
+        .hero-subtitle { font-size: 1rem; margin-bottom: 25px; }
+        .white-section, .gray-section { padding: 40px 15px; }
+        .pricing-card { padding: 30px 20px; }
+        .btn-primary, .btn-secondary { width: 100%; text-align: center; margin: 10px 0; display: block; box-sizing: border-box; }
+        .ui-card { margin-bottom: 20px; }
+        .footer-container { padding: 40px 15px 20px 15px; }
     }
 </style>
 """, unsafe_allow_html=True)
