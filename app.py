@@ -311,7 +311,7 @@ st.markdown("""
     <div class="review-card">
         <div class="stars">★★★★★</div>
         <p style="color: #475569; font-style: italic; font-size: 0.95rem;">"The scenario questions felt almost identical in tone to the real exam. Walking in on test day, nothing surprised me."</p>
-        <div class="reviewer-name">Priya M.</div>
+        <div class="reviewer-name">Kumud M.</div>
     </div>
     <div class="review-card">
         <div class="stars">★★★★★</div>
