@@ -9,6 +9,7 @@ st.markdown("""
     html, body, [class*="css"] { 
         font-family: 'Inter', sans-serif !important; 
         background-color: #F8FAFC !important; 
+        scroll-behavior: smooth;
     }
     
     /* Hide Streamlit Defaults */
@@ -79,15 +80,8 @@ st.markdown("""
     .white-section { padding: 90px 8%; background-color: #FFFFFF; }
     .gray-section { padding: 90px 8%; background-color: #F8FAFC; }
     
-    .value-card {
-        text-align: center;
-        padding: 30px 20px;
-    }
-    .value-icon {
-        font-size: 2.5rem;
-        color: #D4AF37;
-        margin-bottom: 20px;
-    }
+    .value-card { text-align: center; padding: 30px 20px; }
+    .value-icon { font-size: 2.5rem; color: #D4AF37; margin-bottom: 20px; }
     
     /* UI Mockup Cards */
     .ui-card {
@@ -158,13 +152,57 @@ st.markdown("""
         letter-spacing: 1px;
         transform: rotate(45deg);
     }
+    
+    /* Custom Footer */
+    .footer-section {
+        background-color: #0F172A;
+        color: #94A3B8;
+        padding: 60px 8% 20px 8%;
+        font-family: 'Inter', sans-serif;
+    }
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        border-bottom: 1px solid #1E293B;
+        padding-bottom: 40px;
+    }
+    .footer-column h4 {
+        color: #F8FAFC;
+        font-size: 1.05rem;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+    .footer-column ul { list-style: none; padding: 0; margin: 0; }
+    .footer-column li { margin-bottom: 12px; }
+    .footer-column a {
+        color: #94A3B8;
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: color 0.2s;
+    }
+    .footer-column a:hover { color: #D4AF37; }
+    .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        font-size: 0.75rem;
+    }
+    .footer-disclaimer {
+        background-color: #1E293B;
+        padding: 10px 20px;
+        border-radius: 4px;
+        display: inline-block;
+        margin-bottom: 15px;
+        font-size: 0.7rem;
+        color: #64748B;
+    }
 </style>
 """, unsafe_allow_html=True)
 
 # --- NOTIFICATION BAR ---
 st.markdown("""
 <div style="background-color: #D4AF37; text-align: center; padding: 12px; color: #0F172A; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px;">
-    LATEST ECO ALIGNMENT COMPLETED. <a href="https://app.pmpelite.com" style="color: #0F172A; text-decoration: underline;">BEGIN YOUR FREE ASSESSMENT</a>
+    LATEST ECO 2026 ALIGNMENT COMPLETED. <a href="https://app.pmpelite.com" style="color: #0F172A; text-decoration: underline;">BEGIN YOUR FREE ASSESSMENT</a>
 </div>
 """, unsafe_allow_html=True)
 
@@ -210,7 +248,7 @@ with c3:
     """, unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
-# --- PRODUCT SHOWCASE (WITH CSS UI MOCKUPS) ---
+# --- PRODUCT SHOWCASE ---
 st.markdown('<div class="gray-section">', unsafe_allow_html=True)
 st.markdown('<h2 class="serif-text" style="text-align: center; font-size: 2.5rem; color: #0F172A; margin-bottom: 10px;">The Platform Engine</h2>', unsafe_allow_html=True)
 st.markdown('<p style="text-align: center; color: #64748B; margin-bottom: 50px;">A glimpse into the workflow: rigorous practice, intelligent insights, and definitive readiness tracking.</p>', unsafe_allow_html=True)
@@ -318,7 +356,7 @@ st.markdown("""
     </div>
     <div class="review-card">
         <div class="stars">★★★★★</div>
-        <p style="color: #475569; font-style: italic; font-size: 0.95rem;">"The best investment in my PMP journey. The questions are remarkably close to what I saw on the real 2026 ECO test."</p>
+        <p style="color: #475569; font-style: italic; font-size: 0.95rem;">"The best investment in my PMP journey. The questions are remarkably close to what I saw on the real ECO test."</p>
         <div class="reviewer-name">David L.</div>
     </div>
     <div class="review-card">
@@ -359,19 +397,49 @@ with p_col:
     """, unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
-# --- FAQ ---
-st.markdown('<div class="gray-section" style="padding-top: 40px; padding-bottom: 40px;">', unsafe_allow_html=True)
-st.markdown('<div style="max-width: 800px; margin: 0 auto;">', unsafe_allow_html=True)
-st.markdown('<h2 class="serif-text" style="text-align: center; font-size: 2rem; color: #0F172A; margin-bottom: 30px;">Frequently Asked Questions</h2>', unsafe_allow_html=True)
+# --- LEGAL & POLICIES (RAZORPAY COMPLIANCE) ---
+st.markdown('<div id="legal-policies" class="white-section" style="padding-top: 20px; padding-bottom: 20px;">', unsafe_allow_html=True)
+st.markdown('<div style="max-width: 900px; margin: 0 auto;">', unsafe_allow_html=True)
+st.markdown('<h3 class="serif-text" style="color: #0F172A; margin-bottom: 20px;">Company Support & Legal</h3>', unsafe_allow_html=True)
 
-with st.expander("Is this simulator aligned with the current exam?"):
-    st.write("Yes. The question bank is meticulously aligned with the current PMP Examination Content Outline (ECO), incorporating heavily weighted Agile, Hybrid, and Predictive methodologies.")
+with st.expander("About Us"):
+    st.write("""
+    We are an independent educational technology initiative founded by seasoned enterprise project managers. 
+    Our singular mission is to bridge the gap between theoretical frameworks and real-world execution through rigorous, 
+    data-driven exam simulations. We build professional tools for professionals.
+    """)
     
-with st.expander("Can I try it before paying?"):
-    st.write("Absolutely. You can launch the Free Readiness Assessment immediately with no credit card required to experience the interface and question quality.")
+with st.expander("Contact Us"):
+    st.write("""
+    **Customer Support & Billing Queries:**
+    Please direct all inquiries, technical support requests, or payment issues to:
+    **Email:** sagar@assuretrac.com
+    We aim to respond to all inquiries within 24-48 business hours.
+    """)
 
-with st.expander("Are the bonus question banks included?"):
-    st.write("Yes. The Elite tier includes lifetime access to our specialized bonus question banks alongside the core mock exams and domain sprints.")
+with st.expander("Terms and Conditions"):
+    st.write("""
+    **1. Acceptance of Terms:** By accessing and using this platform, you accept and agree to be bound by the terms and provisions of this agreement.
+    **2. Intellectual Property:** All mock exams, rationales, platform design, and provided text are the proprietary intellectual property of the platform creators. Users may not scrape, copy, distribute, or resell any materials from this platform.
+    **3. Account Security:** Users are responsible for maintaining the confidentiality of their login credentials. 
+    **4. Limitation of Liability:** The platform is provided "as is". While we strive for accuracy, we do not guarantee that the use of this simulator will result in a passing score on the official PMP exam.
+    **5. Governing Law:** These terms are governed by the laws of Maharashtra, India.
+    """)
+
+with st.expander("Privacy Policy"):
+    st.write("""
+    **1. Data Collection:** We collect basic profile information (such as Name and Email Address) solely for the purpose of account creation, authentication, and providing access to the simulator.
+    **2. Performance Data:** Exam results and analytics are securely stored to populate your personal dashboard.
+    **3. Data Protection:** We utilize enterprise-grade backend infrastructure (Supabase/PostgreSQL) to ensure your data is encrypted and secure. 
+    **4. Third-Party Sharing:** We do not sell, trade, or rent your personal identification information to any third parties. Payments are processed securely via Razorpay, and we do not store your credit card information.
+    """)
+
+with st.expander("Refund and Cancellation Policy"):
+    st.write("""
+    Due to the nature of our product—which provides immediate, unhindered access to proprietary digital content and question banks upon purchase—**all sales are final**. 
+    
+    We do not offer refunds, cancellations, or partial credits once a payment is successfully processed and Elite access is granted to your account. We strongly encourage all users to utilize the Free Readiness Assessment to evaluate the platform before committing to a purchase. If you experience technical difficulties accessing your account post-purchase, please contact support immediately at sagar@assuretrac.com.
+    """)
 st.markdown('</div></div>', unsafe_allow_html=True)
 
 # --- BOTTOM CTA ---
@@ -380,5 +448,53 @@ st.markdown("""
     <h1 class="hero-title serif-text" style="font-size: 2.8rem;">The Exam Won't Wait.</h1>
     <p class="hero-subtitle" style="margin-bottom: 35px; color: #CBD5E1;">Identify your precise knowledge gaps in 15 minutes, then convert your baseline into exam-day confidence.</p>
     <a href="https://app.pmpelite.com" class="btn-primary" target="_self">Start Free Assessment</a>
+</div>
+""", unsafe_allow_html=True)
+
+# --- HTML FOOTER ---
+st.markdown("""
+<div class="footer-section">
+    <div class="footer-grid">
+        <div class="footer-column">
+            <h4>Simulator</h4>
+            <ul>
+                <li><a href="https://app.pmpelite.com">Start Free Assessment</a></li>
+                <li><a href="#pricing">Pricing & Plans</a></li>
+                <li><a href="#pricing">Features Overview</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Resources</h4>
+            <ul>
+                <li><a href="#pricing">Bonus Question Banks</a></li>
+                <li><a href="https://app.pmpelite.com">Performance Analytics</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Company</h4>
+            <ul>
+                <li><a href="#legal-policies">About Us</a></li>
+                <li><a href="#legal-policies">Contact Support</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="#legal-policies">Terms of Service</a></li>
+                <li><a href="#legal-policies">Privacy Policy</a></li>
+                <li><a href="#legal-policies">Refund Policy</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="footer-disclaimer">
+            Independent preparation platform. PMP®, PMBOK®, and PMI® are registered marks of the Project Management Institute, Inc.<br>
+            This platform is not affiliated with, approved by, or endorsed by PMI.
+        </div>
+        <div style="color: #64748B; margin-top: 10px;">
+            © 2026 Elite Simulator Systems. All rights reserved.
+        </div>
+    </div>
 </div>
 """, unsafe_allow_html=True)
